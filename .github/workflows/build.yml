@@ -12,4 +12,3 @@ jobs:
     - uses: cyrusroshan/generic-docker-run@main
       with:
         command: "docker run -it --rm -v out:/out siara/adblock2privoxy:2.1.0 -p /out ${{ vars.BLOCKLISTS }}"
-        options: -v out:/out bsiara/adblock2privoxy:2.1.0 -p /out ${{ vars.BLOCKLISTS }}
