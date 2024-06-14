@@ -16,9 +16,11 @@ jobs:
         password: ${{ secrets.DOCKERHUB_TOKEN }}
     - uses: cyrusroshan/generic-docker-run@main
       with:
-        command: "docker run --rm -v actions:/out bsiara/adblock2privoxy:2.1.0 -p /out ${{ vars.BLOCKLISTS }}"
+        command: "docker run -v actions:/out bsiara/adblock2privoxy:2.1.0 -p /out ${{ vars.BLOCKLISTS }}"
     - name: build image
       run: |
+        ls -l 
+        ls -lR
         TIMESTAMP=$(date +%s)
         docker build -t ${{ vars.DOCKERHUB_USERNAME }}/${{ vars.IMAGE_NAME }}:${TIMESTAMP} .
         docker push ${{ vars.DOCKERHUB_USERNAME }}/${{ vars.IMAGE_NAME }}:${TIMESTAMP}
