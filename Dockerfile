@@ -1,5 +1,5 @@
 FROM alpine:latest
-COPY config/privoxy/ /etc/privoxy/
+COPY config/ /etc/privoxy/
 RUN apk --no-cache --update add privoxy wget ca-certificates  
 RUN sed -i'' 's/127\.0\.0\.1:8118/0\.0\.0\.0:8118/' /etc/privoxy/config 
 RUN sed -i'' 's/enable-edit-actions\ 0/enable-edit-actions\ 1/' /etc/privoxy/config 

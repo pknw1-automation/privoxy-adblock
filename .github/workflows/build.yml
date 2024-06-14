@@ -17,7 +17,7 @@ jobs:
         password: ${{ secrets.DOCKERHUB_TOKEN }}
     - uses: cyrusroshan/generic-docker-run@main
       with:
-        command: "docker run -v config/privoxy:/out bsiara/adblock2privoxy:2.1.0 -p /out ${{ vars.BLOCKLISTS }}"
+        command: "docker run -v config:/out bsiara/adblock2privoxy:2.1.0 -p /out ${{ vars.BLOCKLISTS }}"
     - name: build image
       run: |
         ls -l 
