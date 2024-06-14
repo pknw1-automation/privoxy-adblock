@@ -1,0 +1,11 @@
+services:
+  privoxy-adblock:
+    image: pknw1/privoxy-adblock:latest
+    dns:
+      - 1.1.1.1
+      - 8.8.8.8
+    container_name: privoxy-adblock
+    hostname: privoxy-adblock
+    ports:
+      - 0.0.0.0:8118:8118
+
