@@ -21,6 +21,5 @@ jobs:
     - name: build image
       run: |
         TIMESTAMP=$(date +%s)
-        docker run -v config:/out bsiara/adblock2privoxy:2.1.0 -p /out ${{ vars.BLOCKLISTS }}
         docker build -t ${{ vars.DOCKERHUB_USERNAME }}/${{ vars.IMAGE_NAME }}:${TIMESTAMP} .
         docker push ${{ vars.DOCKERHUB_USERNAME }}/${{ vars.IMAGE_NAME }}:${TIMESTAMP}
