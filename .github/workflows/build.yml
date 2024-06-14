@@ -1,7 +1,8 @@
 name: Docker Image Build
 
 on:
-  workflow_dispatch
+  push:
+  workflow_dispatch:
 
 jobs:
 
@@ -16,4 +17,9 @@ jobs:
         password: ${{ secrets.DOCKERHUB_TOKEN }}
     - uses: cyrusroshan/generic-docker-run@main
       with:
-        command: "docker run --rm -v out:/out bsiara/adblock2privoxy:2.1.0 -p /out ${{ vars.BLOCKLISTS }}"
+        command: "docker pull bsiara/adblock2privoxy:2.1.0"
+    - name: build image
+      run: |
+        TIMESTAMP=$(date +%s)
+        docker build -t ${{ vars.DOCKERHUB_USERNAME }}/${{ vars.IMAGE_NAME }}:${TIMESTAMP} .
+        docker push ${{ vars.DOCKERHUB_USERNAME }}/${{ vars.IMAGE_NAME }}:${TIMESTAMP}
