@@ -1,4 +1,5 @@
 # privoxy-adblock
+![logo](https://i.imgur.com/xBYqP0y.png)
 
 A privoxy image with pre-built filters and actions from easylist, updated at build time for in-situ ad-blocking and filtering.
 
